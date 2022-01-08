@@ -3,6 +3,10 @@ import "./App.css";
 import { useEffect } from "react";
 import Header from "./Components/Header";
 import MenuContainer from "./Components/MenuContainer";
+import BannerName from "./Components/BannerName";
+import SubMenuContainer from "./Components/SubMenuContainer";
+import MenuCard from "./Components/MenuCard";
+import {MenuItems, Items} from './Components/Data';
 
 function App() {
 
@@ -15,6 +19,20 @@ useEffect(() => {
  }
 
  menuLi.forEach(n =>n.addEventListener('click', setMenuActive))
+
+// Menucard active toggle
+const menuCards = document
+.querySelector(".rowContainer")
+.querySelectorAll(".rowMenuCard");
+
+function setMenuCardActive(){
+  menuCards.forEach((n) => n.classList.remove("active"));
+  this.classList.add("active");
+}
+
+
+menuCards.forEach((n) =>n.addEventListener("click",setMenuCardActive));
+
 }, [])
 
   return (
@@ -23,14 +41,45 @@ useEffect(() => {
 
       <Header />
 
-      {/* main container */}
+         {/* main container */}
 
       <main>
         <div className="mainContainer">
-        {/*banner */}
-          <div className="banner"></div>
+
+             {/*banner */}
+        
+          <div className="banner">
+            <BannerName name={"Ajit"} discount={"20"} link={"#"}/>
+            <img src="https://firebasestorage.googleapis.com/v0/b/food-delivery-37c59.appspot.com/o/Images%2Fdelivery.png?alt=media&token=69b9823d-96df-452a-bd4e-14d27a4cc337" 
+              alt="delivery pic"
+              className="deliverypic"
+            />
+          </div>
         </div>
+
+        {/* dish container */}
+
+          <div className="dishContainer">
+            <div className="menuCard">
+              <SubMenuContainer name={"Menu Category"}/>
+            </div>
+            <div className="rowContainer">
+            {MenuItems && MenuItems.map((data) => (
+              <div key= {data.id}>
+                <MenuCard imgSrc={data.imgSrc}
+                 name={data.name}
+                 isActive={data.id === 1 ? true : false}
+                 />
+              </div>
+            ))}
+             
+            </div>
+            <div className="dishitemCointainer"></div>
+
+          </div>
+
         <div className="rightMenu"></div>
+
       </main>
 
       {/* bottom menu section */}
