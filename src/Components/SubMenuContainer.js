@@ -1,16 +1,18 @@
-import { ChevronRightRounded } from '@mui/icons-material'
-import React from 'react'
+import { ChevronRightRounded } from "@mui/icons-material";
+import React from "react";
 
-function SubMenuContainer({name}) {
-    return (
-        <div className="SubMenuContainer">
-            <h3>{name}</h3>
-            <div className="viewAll">
-                <p>view all</p>
-                <i><ChevronRightRounded/></i>
-            </div>
-        </div>
-    )
+function SubMenuContainer() {
+  return (
+    <div className="subMenuContianer">
+      <h3>Menu Category</h3>
+      <div className="viewAll">
+        <p>View All</p>
+        <i>
+          <ChevronRightRounded />
+        </i>
+      </div>
+    </div>
+  );
 }
 
-export default SubMenuContainer
+export default SubMenuContainer;
